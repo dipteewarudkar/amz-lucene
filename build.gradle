@@ -1,0 +1,53 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+version = '1.1.0'
+description = 'Common Java Library / Share code'
+
+jar {
+    baseName = 'amz-common-java'
+}
+
+processResources {
+    expand(project.properties)
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile("redis.clients:jedis:2.7.0")
+    compile("org.postgresql:postgresql:9.3-1103-jdbc41")
+    compile("redis.clients:jedis:2.7.0")
+    compile("org.apache.httpcomponents:httpclient:4.3.5")
+    compile("com.fasterxml.jackson.core:jackson-databind:2.4.5")
+    compile("com.opencsv:opencsv:3.3")
+    compile("org.apache.avro:avro:1.7.7")
+    compile("com.amazonaws:aws-java-sdk:1.10.2")
+    compile("org.apache.commons:commons-math3:3.5")
+    compile("com.google.apis:google-api-services-analytics:v3-rev116-1.20.0")
+    compile("org.apache.mahout:mahout-mr:0.10.0")
+    compile("org.apache.lucene:lucene-core:5.2.1")
+    compile ("org.apache.lucene:lucene-queryparser:5.2.1")
+    compile ("org.apache.lucene:lucene-analyzers-common:5.2.1") 
+    compile("net.htmlparser.jericho:jericho-html:3.3")
+    compile("io.sprucehill:mandrill-java-api-wrapper:0.8.1")
+   
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}
